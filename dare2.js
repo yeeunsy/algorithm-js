@@ -1,12 +1,11 @@
 
-
 // --- 1. 중복된 문자는 제거, 남은 문자는 순서대로 반환
-function removeDuplicates(s) {
+function removeWord(s) {
     let seen = new Set();
     let result = '';
 
-    for (let char of s) {
-        if (!seen.has(char)) {
+    for ( let char of s ) {
+        if ( !seen.has(char) ) {
             seen.add(char);
             result += char;
         }
@@ -15,27 +14,26 @@ function removeDuplicates(s) {
     return result;
 }
 
-console.log(removeDuplicates("abcabc"));
-console.log(removeDuplicates("hello"));    
-console.log(removeDuplicates("aabbccdde"));
+console.log(removeWord("abcabc"));
+console.log(removeWord("hello"));    
+console.log(removeWord("aabbccdde"));
 
 
 
 
 // --- 2. 주어진 배열에서 최솟값, 최대값을 배열로 반환
-function findMinMax(arr) {
+function find(arr) {
     let min = arr[0];
     let max = arr[0];
 
-    for (let i = 0; i < arr.length; i++) {
-        // 배열의 최솟값 찾기
-        if (arr[i] < min) {
+    for ( let i = 0; i < arr.length; i++ ) {
+        // 최솟값 찾기
+        if ( arr[i] < min ) {
             min = arr[i];
-
         }
         
         // 최대값 찾기
-        if (arr[i] > max) {
+        if ( arr[i] > max ) { 
             max = arr[i];
         }
     }
@@ -43,57 +41,60 @@ function findMinMax(arr) {
     return [min, max];
 }
 
-console.log(findMinMax([3, 1, 4, 1, 5, 9]));   
-console.log(findMinMax([-10, -20, 0, 10, 5])); 
+console.log(find([3, 1, 4, 1, 5, 9]));   
+console.log(find([-10, -20, 0, 10, 5])); 
 
 
 
 
 // --- 3. 문자열 요약 해주기
-function summarizeString(str) {
+function summation(str) {
     let result = '';
-    let currentChar = str[0];
+    let char = str[0];
     let count = 0;
 
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === currentChar) {
+    for ( let i = 0; i < str.length; i++ ) {
+        if ( str[i] === char ) {
             count++;
         } else {
-            result += `${currentChar}${count} / `;
-            currentChar = str[i];
+            result += `${char}${count} / `;
+            char = str[i];
             count = 1;
         }
     }
 
-    return result += `${currentChar}${count}`;
+    return result += `${char}${count}`;
 }
 
-console.log(summarizeString('aaabbbc'));
-console.log(summarizeString('ahhhhz'));
+console.log(summation('aaabbbc'));
+console.log(summation('ahhhhz'));
 
 
 
 
 // --- 4. 배열에서 두 수를 선택하여 그 합이 주어진 target 값과 일치하는지 확인 ( 일치 : true / 불일치 : false )
-function hasPairWithSum(arr, target) {
-    const seenNumbers = new Set();
+function between(arr, target) {
+    const seen = new Set();
 
-    for (let i = 0; i < arr.length; i++) {
-        const currentNumber = arr[i];
-        const complement = target - currentNumber;
+    for ( let i = 0; i < arr.length; i++ ) {
+        const number = arr[i];
+        const res = target - number;
 
-        // Check if the complement of the current number exists in the set
-        if (seenNumbers.has(complement)) {
+        if (seen.has(res)) {
             return true;
         }
 
-        // Add the current number to the set
-        seenNumbers.add(currentNumber);
+        seen.add(number);
     }
 
-    // If no pair is found that sums to the target, return false
+    // 합이 맞는 두 수가 없을 경우
     return false;
 }
 
-const target = 9;
-console.log(hasPairWithSum([2, 7, 11, 15], target)); // Output: true
+console.log(between([2, 7, 11, 15], 9));
+
+
+
+
+// --- 5. 문자열이 유효한 괄호인지 확인
+
