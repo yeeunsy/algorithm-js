@@ -97,4 +97,34 @@ console.log(between([2, 7, 11, 15], 9));
 
 
 // --- 5. 문자열이 유효한 괄호인지 확인
+function check(s) {
+    
+    if (s.length < 1 || s.length > 1000) {
+        return false;
+    }
+    
+    const stack = [];
+
+    // 일치하는 쌍
+    const match = {
+        ')': '(',
+        '}': '{',
+        ']': '['
+    };
+    
+    for (let char of s) {
+        //
+        if (char === '(' || char === '{' || char === '[') {
+            stack.push(char);
+        } else if (stack.length === 0 || stack.pop() !== match[char]) {
+            return false;
+        }
+
+    }
+
+    return stack.length === 0;
+}
+
+console.log(check("({[]})"));
+console.log(check("({][})"));
 

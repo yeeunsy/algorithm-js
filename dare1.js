@@ -16,6 +16,8 @@ let resGcd = ( num1, num2 ) => {
 console.log("최대 공약수 : ", resGcd(12, 18));
 
 
+
+
 // 2. 배열의 짝수와 홀수의 개수 세기
 function evenOdd(num_list) {
     return [
@@ -25,6 +27,8 @@ function evenOdd(num_list) {
   }
 
 console.log("짝수 홀수 개수 : ", evenOdd([1,2,3,4,5,6]));
+
+
 
 
 // 3. 문자열 역순 배치 후 오른쪽으로 이동
@@ -54,6 +58,8 @@ function reverse(str_list) {
 console.log("hello : ", reverse("hello")); 
 
 
+
+
 // 4. 배열에서 가장 큰 값 구하기
 function findMax (num_list) {
     const max = Math.max(...num_list);
@@ -62,6 +68,8 @@ function findMax (num_list) {
 }
 
 console.log(findMax([1, 2, 1, 3, 2, 1, 4, 1]));
+
+
 
 
 // 5. 
